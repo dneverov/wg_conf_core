@@ -1,29 +1,38 @@
 # WgConfCore
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/wg_conf_core`. To experiment with that code, run `bin/console` for an interactive prompt.
+`WgConfCore` is a pure backend library designed to provide the core logic for the [wg_conf](https://github.com/dneverov/wg_conf) CLI toolset.
 
-TODO: Delete this and the text above, and describe your gem
+It handles managing, synchronizing, evaluating, and running WireGuard and AmneziaWG configuration files via Ruby. The library is completely isolated from terminal output (`puts`/`print`) and communicates exclusively using clean data structures and strict exceptions, making it perfectly suited for automation scripts, system services, or Telegram bots.
+
+## Features
+
+- **Configuration Management (`Config`)**: Handles secure system verification, path expansions, and lazy evaluation of configuration parameters.
+- **Directory Synchronization (`FileCopier`, `Copier`)**: Manages safe bulk imports, file name tokenization, and dynamic conflict resolutions.
+- **Status & Ping Checking (`VpnPinger`)**: Provides multi-threaded or sequential validation of live tunnel connections.
+- **Interface Runner (`VpnRunner`)**: Safely controls `systemd` network interfaces, monitors active states, and catches low-level exceptions.
 
 ## Installation
 
-Install the gem and add to the application's Gemfile by executing:
+Add this line to your application's `Gemfile`:
 
-    $ bundle add wg_conf_core
+```ruby
+gem 'wg_conf_core', git: 'https://github.com/dneverov/wg_conf_core', branch: 'master'
+```
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+And then execute:
 
-    $ gem install wg_conf_core
+```bash
+bundle install
+```
 
-## Usage
+## Running Tests
 
-TODO: Write usage instructions here
+The core gem includes a robust unit testing environment. To execute the internal suite locally, run:
 
-## Development
+```bash
+bundle exec rake test
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+## License
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/wg_conf_core.
+The gem is available as open source under the terms of the [MIT License](LICENSE).
