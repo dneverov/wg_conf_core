@@ -1,8 +1,8 @@
 # WgConfCore
 
-`WgConfCore` is a pure backend library that provides core logic for managing, synchronizing, evaluation, and running WireGuard and AmneziaWG configuration files via Ruby CLI applications.
+`WgConfCore` is a pure backend library designed to provide the core logic for the [wg_conf](https://github.com/dneverov/wg_conf) CLI toolset.
 
-It is completely isolated from terminal output (`puts`/`print`) and communicates exclusively using clean data structures and strict exceptions, making it perfectly suited for automation scripts, system services, or Telegram bots.
+It handles managing, synchronizing, evaluating, and running WireGuard and AmneziaWG configuration files via Ruby. The library is completely isolated from terminal output (`puts`/`print`) and communicates exclusively using clean data structures and strict exceptions, making it perfectly suited for automation scripts, system services, or Telegram bots.
 
 ## Features
 
