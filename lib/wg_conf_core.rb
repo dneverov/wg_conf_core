@@ -11,6 +11,8 @@ require_relative "wg_conf_core/namer"
 require_relative "wg_conf_core/vpn_lister"
 require_relative "wg_conf_core/vpn_pinger"
 require_relative "wg_conf_core/vpn_runner"
+require_relative "wg_conf_core/vpn_config_parser"
+require_relative "wg_conf_core/vpn_shield"
 
 module WgConfCore
   class Error < StandardError; end
