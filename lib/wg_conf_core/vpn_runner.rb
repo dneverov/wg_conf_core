@@ -10,7 +10,7 @@ class VpnRunner
     end
 
     # Возвращает имя запущенного интерфейса (String)
-    def run!(config_name = nil, show_status: false)
+    def run!(config_name = nil, show_status: false, kill_switch: false)
       # Метод вернет имя или выбросит raise
       config_name = get_interface_name(config_name)
 
@@ -22,11 +22,18 @@ class VpnRunner
       # Просто вызываем запуск. Если будет ошибка — start_connection сам выбросит raise!
       start_connection(config_name)
 
+      # Включаем Kill Shield СРАЗУ после старта
+      if kill_switch
+        VpnShield.enable!(config_name)
+      end
+
       show_status_info(config_name) if show_status
       config_name
     end
 
     def stop_connections
+      # Сбрасываем блокировки при штатной остановке.
+      VpnShield.disable!
       # sudo systemctl stop 'awg-quick@*'
       execute_command("systemctl stop '#{Config.vpn_service}*'")
     end
